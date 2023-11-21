@@ -1,6 +1,7 @@
 import { Poppins_400Regular, Poppins_700Bold, Poppins_800ExtraBold, useFonts } from '@expo-google-fonts/poppins';
 import React, { useEffect } from 'react';
 import { ImageBackground, StyleSheet, Text, View } from 'react-native';
+import FontGoogle from '../../components/font/fontGoogle';
 
 export default function Home({ navigation }) {
   // font
@@ -27,6 +28,7 @@ export default function Home({ navigation }) {
       source={require('../../../assets/HomeBackgraund.png')}
       style={styles.backgroundImage}
     >
+
       <View style={styles.container}>
         <View style={styles.textContainer}>
           <Text style={styles.textPrimary}>IrisCare</Text>

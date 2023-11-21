@@ -12,26 +12,6 @@ export const styles = StyleSheet.create({
         width: '100%',
         height: '100%',
     },
-    textContainer: {
-        width: 205,
-        height: 139,
-        top: 70,
-        left: 35,
-    },
-    textPrimary: {
-        color: '#ffffff',
-        fontSize: 35,
-        fontFamily: 'PoppinsExtraBold',
-        lineHeight: 45,
-        justifyContent: 'center',
-        alignItems: 'center',
-    },
-    textSecondary: {
-        color: '#89FFDB',
-        fontSize: 18,
-        fontFamily: 'PoppinsRegular',
-        lineHeight: 25,
-    },
     containerLogin: {
         width: "90%",
         //justifyContent: 'center',
@@ -39,7 +19,7 @@ export const styles = StyleSheet.create({
         backgroundColor: '#900f81',
     },
     backgraundLogin: {
-        marginTop: 100,
+        marginTop: 120,
         width: "100%",
         alignSelf: "center",
         borderRadius: 15,
@@ -131,6 +111,22 @@ export const styles = StyleSheet.create({
         marginTop: 20,
         fontSize: 15,
         letterSpacing: 1,
+      },
+      card: {
+        backgroundColor: 'white', // Cor de fundo do card
+        padding: 16,
+        borderRadius: 8,
+        alignItems: 'center',
+      },
+      image: {
+        width: 100,
+        height: 100,
+        borderRadius: 50, // Para uma imagem redonda, se desejar
+        marginBottom: 8,
+      },
+      text: {
+        color: 'black', // Cor do texto
+        marginBottom: 8,
       },
 });
 

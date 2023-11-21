@@ -8,6 +8,7 @@ export default{
     textPlaceHolder: "#303E3A",
     textRodape: "#8F8A8A",
     button: "rgba(137, 255, 219, 0.51)",
+    greenSolidTransparent: "rgba(32, 65, 68, 0.90)",
 
 
    
