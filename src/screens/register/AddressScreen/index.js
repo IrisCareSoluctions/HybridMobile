@@ -1,10 +1,10 @@
 import React, { useState } from 'react'
 
 import { ImageBackground, SafeAreaView, Text, TextInput, ToastAndroid, View, Button, ScrollView } from 'react-native';
-import ButtonDefault from '../../../components/Buttons/ButtonDefault';
+import ButtonDefault from '../../../components/buttons/ButtonDefault';
 import InputDefault from '../../../components/Input/InputDefault';
 import { styles } from "./styles";
-import FontGoogle from '../../../components/font/fontGoogle';
+import FontGoogle from '../../../components/font/FontGoogle';
 import ApiCep from '../../../service/ApiCep'
 
 

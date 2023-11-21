@@ -6,11 +6,12 @@ import { StyleSheet } from 'react-native';
 import Home from './src/screens/home';
 import Login from './src/screens/login';
 
-import InitialRegistrationRegistre from './src/screens/registre/InitialRegistrationScreen';
-import PersonalInfoRegistre from './src/screens/registre/PersonalInfoScreen';
-import AddressRegistre from './src/screens/registre/AddressScreen';
-import ContactRegistre from './src/screens/registre/ContactScreen';
-import FinalRegistrationRegistre from './src/screens/registre/FinalRegistrationScreen';
+//Regiter
+import InitialRegistrationRegistre from './src/screens/register/InitialRegistrationScreen';
+import PersonalInfoRegistre from './src/screens/register/PersonalInfoScreen';
+import AddressRegistre from './src/screens/register/AddressScreen';
+import ContactRegistre from './src/screens/register/ContactScreen';
+import FinalRegistrationRegistre from './src/screens/register/FinalRegistrationScreen';
 
 const Stack = createNativeStackNavigator();
 

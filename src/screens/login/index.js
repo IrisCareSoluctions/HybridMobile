@@ -2,12 +2,12 @@
 import { Ionicons, MaterialIcons } from "@expo/vector-icons";
 import React, { useState } from "react";
 import { ImageBackground, SafeAreaView, Text, TextInput, TouchableOpacity, View } from 'react-native';
-import Colors from '../../Shared/Colors';
-import ButtonDefault from '../../components/Buttons/ButtonDefault';
+import Colors from '../../shared/Colors';
+import ButtonDefault from '../../components/buttons/ButtonDefault';
 import { styles } from "./styles";
 import * as Google from 'expo-auth-session/providers/google'
 import AsyncStorage from "@react-native-async-storage/async-storage"
-import FontGoogle from '../../components/font/fontGoogle';
+import FontGoogle from '../../components/font/FontGoogle';
 import * as WebBrowser from "expo-web-browser"
 
 WebBrowser.maybeCompleteAuthSession();
