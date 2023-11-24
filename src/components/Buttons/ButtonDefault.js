@@ -6,14 +6,28 @@ import * as WebBrowser from "expo-web-browser";
 
 WebBrowser.maybeCompleteAuthSession();
 
-export default function ButtonDefault({ onPress, title, variant }) {
-  const buttonStyle = variant === 'cancel' ? {
+export default function ButtonDefault({ onPress, title, variant, style }) {
+  const buttonStyle = variant === 'secondary' ? {
     backgroundColor: Colors.greenSolid,
     borderColor: Colors.greenSolid,
+  } : variant === 'cancel' ? {
+    backgroundColor: "red",
+    borderColor: "#C2000B",
+    color: "#204144",
+    justifyContent: 'center',
+    alignItems: 'center',
+
+  } : variant === 'dark' ? {
+    backgroundColor: Colors.green,
+    borderColor: Colors.greenSolid,
+    color: "#204144",
+    justifyContent: 'center',
+    alignItems: 'center',
+
   } : variant === 'litler' ? {
     width: "20%",
     borderRadius: 15,
-    top:-6,
+    top: -6,
     borderColor: "#89FFDB",
     borderWidth: 1,
     backgroundColor: Colors.button,
@@ -44,7 +58,8 @@ export default function ButtonDefault({ onPress, title, variant }) {
         alignSelf: 'center',
         borderRadius: 10,
         fontSize: 18,
-        ...buttonStyle, // Adiciona as propriedades específicas do estilo da variante
+        ...buttonStyle,
+        ...style,
       }}
     >
       <Text
@@ -57,7 +72,7 @@ export default function ButtonDefault({ onPress, title, variant }) {
       >
         {title}
       </Text>
-      {variant === 'litler' && <AntDesign name="search1" size={20} color={Colors.whiteSolid} style={{justifyContent:"center", alignItems:"center"}} />}
+      {variant === 'litler' && <AntDesign name="search1" size={20} color={Colors.whiteSolid} style={{ justifyContent: "center", alignItems: "center" }} />}
     </TouchableOpacity>
   );
 }

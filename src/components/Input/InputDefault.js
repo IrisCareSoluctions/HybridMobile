@@ -15,15 +15,16 @@ export default function InputDefault({
   autoCompleteType,
   mask,
   format,
+  
 }) {
   const isMaskedInput = !!mask;
 
   return (
-    <View style={{ flexDirection: "row", alignItems: "center", width: "80%", marginBottom: 15 }}>
+    <View style={{ flexDirection: "row", alignItems: "center", width: "90%", marginBottom: 15 }}>
       <MaterialIcons
         name={icon}
         size={20}
-        color={Colors.greenSolid}
+        color={Colors.greenNeon}
         style={{ marginLeft: -10, marginRight: 5 }}
       />
 
@@ -63,7 +64,7 @@ const inputStyles = {
   paddingHorizontal: 10,
   height: 50,
   borderRadius: 15,
-  borderColor: Colors.greenSolid,
+  borderColor: Colors.greenNeon,
   borderWidth: 2,
   fontSize: 14,
   backgroundColor: "#ffffff",
