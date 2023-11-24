@@ -6,11 +6,14 @@ import ButtonDefault from '../../../components/buttons/ButtonDefault';
 import FontGoogle from '../../../components/font/FontGoogle';
 import { styles } from "./styles";
 import axios from 'axios';
+import { Loading } from '../../../components/Loading/index';
 
 
 const FinalRegistrationScreen = ({ route, navigation }) => {
+
   const { name, email, password, cpf, birthday, zipCode, number, street, neighborhood, city, state, ddd, phoneNumber } = route.params;
 
+  const [isLoading, setIsLoading] = useState(false);
   const [isModalVisible, setModalVisible] = useState(false);
 
   const finalizarCadastro = async () => {
@@ -35,18 +38,21 @@ const FinalRegistrationScreen = ({ route, navigation }) => {
         },
       };
 
+      setIsLoading(true);
       console.log(JSON.stringify(userData, null, 2));
 
-      const response = await axios.post('http://192.168.0.18:8080/api/user', userData);
+      const response = await axios.post('http://192.168.0.18:8080/api/user/signup', userData);
 
       if (response.status === 201) {
-        setModalVisible(true); 
+        setModalVisible(true);
       } else {
         mostrarToast('Erro ao finalizar o cadastro. ' + response.data.error);
       }
     } catch (error) {
       mostrarToast('Erro ao finalizar o cadastro. Tente novamente. ' + error.message);
       console.error(error);
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -117,9 +123,12 @@ const FinalRegistrationScreen = ({ route, navigation }) => {
 
             </View>
             <View style={{ flexDirection: "row", margin: 10 }}>
-              <ButtonDefault title="Voltar" onPress={goBack} variant="cancel" />
+              <ButtonDefault title="Voltar" onPress={goBack} variant="secondary" />
               <ButtonDefault title="Confirmar" onPress={finalizarCadastro} />
             </View>
+
+
+            {isLoading && <Loading />}
 
             <Modal isVisible={isModalVisible} style={{ justifyContent: 'center', alignItems: 'center' }} >
               <View style={{ backgroundColor: Colors.greenSolidTransparent, justifyContent: 'center', alignItems: 'center', width: '90%', height: '35%', borderRadius: 50 }}>

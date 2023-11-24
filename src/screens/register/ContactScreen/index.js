@@ -65,7 +65,7 @@ const ContactScreen = ({ route, navigation }) => {
             />
 
             <View style={{ flexDirection: "row", margin: 10 }}>
-              <ButtonDefault title="Voltar" onPress={goBack} variant="cancel" />
+              <ButtonDefault title="Voltar" onPress={goBack} variant="secondary" />
               <ButtonDefault title="Próximo" onPress={goToNextScreen} />
             </View>
           </View>
