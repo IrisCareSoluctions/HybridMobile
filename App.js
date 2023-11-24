@@ -6,6 +6,22 @@ import { StyleSheet } from 'react-native';
 import Home from './src/screens/home';
 import Login from './src/screens/login';
 
+import DrawerNavigation from './src/components/drawerNavigator/DrawerNavigation';
+import TabNavigator from './src/components/tabNavigator/TabNavigator';
+
+import HomePage from './src/screens/homePage/index';
+
+//User
+import UserDetail from './src/screens/user/UserDetailsScreen/UserDetailsScreen';
+import UserProfileScreen from './src/screens/user/UserProfileScreen'
+import UserUpdateForm from './src/screens/user/UserUpdateForm';
+
+//Analise-Leucocoria
+import AnalysisLeucocoria from './src/screens/analysis/AnalysisLeucocoriaScreen';
+import Camera from './src/screens/analysis/CameraScreen';
+import Resultado from './src/screens/analysis/ResultadoScreen';
+import AgradecimentoScreen from './src/screens/analysis/AgradecimentoScreen';
+
 //Regiter
 import InitialRegistrationRegistre from './src/screens/register/InitialRegistrationScreen';
 import PersonalInfoRegistre from './src/screens/register/PersonalInfoScreen';
@@ -24,6 +40,20 @@ export default function App() {
       >
         <Stack.Screen name="Home" component={Home} options={{ headerShown: false }} />
         <Stack.Screen name="Login" component={Login} options={{ headerShown: false }} />
+        <Stack.Screen name="TabNavigator" component={TabNavigator} options={{ headerShown: false }} />
+        <Stack.Screen name="DrawerNavigation" component={DrawerNavigation} options={{ headerShown: false }} /> 
+        <Stack.Screen name="HomePage" component={HomePage} options={{ headerShown: false }} />
+        <Stack.Screen name="UserDetail" component={UserDetail} options={{ headerShown: false }} />
+
+        <Stack.Screen name="UserProfileScreen" component={UserProfileScreen} options={{ headerShown: false }} />
+        <Stack.Screen name="UserUpdateForm" component={UserUpdateForm} options={{ headerShown: false }} />
+
+
+        <Stack.Screen name="AnalysisLeucocoria" component={AnalysisLeucocoria} options={{ headerShown: false }} />
+        <Stack.Screen name="Camera" component={Camera} options={{ headerShown: false }} />
+        <Stack.Screen name="Resultado" component={Resultado} options={{ headerShown: false }} />
+        <Stack.Screen name="AgradecimentoScreen" component={AgradecimentoScreen} options={{ headerShown: false }} />
+
         <Stack.Screen name="InitialRegistrationRegistre" component={InitialRegistrationRegistre} options={{ headerShown: false }} />
         <Stack.Screen name="PersonalInfoRegistre" component={PersonalInfoRegistre} options={{ headerShown: false }} />
         <Stack.Screen name="AddressRegistre" component={AddressRegistre} options={{ headerShown: false }} />

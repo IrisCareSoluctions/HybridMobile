@@ -35,6 +35,7 @@ export const styles = StyleSheet.create({
     },
     inputWrapper: {
         flexDirection: "row",
+        justifyContent: "center",
         alignItems: "center",
         marginBottom: 20,
     },
