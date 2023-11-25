@@ -42,6 +42,7 @@ const UserDetailsScreen = ({ route, navigation }) => {
     setShowDatePicker(true);
   };
 
+  //CRUD USER - GET (esta listando os dados do usuario  por ID)
   useEffect(() => {
     const fetchUserData = async () => {
       const id = route.params?.id;
@@ -86,6 +87,8 @@ const UserDetailsScreen = ({ route, navigation }) => {
     );
   }
 
+
+  //CRUD USER - PUT (por id)
   const handleUpdateUserDetails = async () => {
     try {
       const updatedData = {
@@ -131,7 +134,7 @@ const UserDetailsScreen = ({ route, navigation }) => {
   
    
 
-
+//CRUD USER - DELETE (por id) -> EXCLUINDO TAMBEM O crud do LOGIN
   const handleDeleteAccount = async () => {
     const id = route.params?.id;
 
