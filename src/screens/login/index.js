@@ -105,7 +105,7 @@ export default function Login({ navigation }) {
 
         mostrarToast("Login realizado com sucesso!");
         navigation.navigate('TabNavigator', {
-          screen: 'HomePage',
+          screen: 'UserDetailsScreen',
           params: { id: responseBody.id },
         },
         {

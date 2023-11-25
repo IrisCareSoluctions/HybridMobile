@@ -88,29 +88,44 @@ const UserDetailsScreen = ({ route, navigation }) => {
 
   const handleUpdateUserDetails = async () => {
     try {
-      const updatedData = {
+      const birthdayDate = new Date(userData.birthday);
+  
+      //Separeio Objeto para enviar no corpo da solicitação
+      const requestData = {
         name: updatedUserData.name || userData.name,
         cpf: updatedUserData.cpf || userData.cpf,
-        birthday: formatToDDMMYYYY(new Date(updatedUserData.birthday || userData.birthday)),
+        birthday: formatToDDMMYYYY(birthdayDate),
         email: updatedUserData.email || userData.email,
         password: updatedUserData.password || userData.password,
       };
-
+  
+      // Objeto para exibir no console (mantendo a data no formato original) -> Entender o que estava rolando
+      const updatedData = {
+        name: updatedUserData.name || userData.name,
+        cpf: updatedUserData.cpf || userData.cpf,
+        birthday: userData.birthday,
+        email: updatedUserData.email || userData.email,
+        password: updatedUserData.password || userData.password,
+      };
+  
       console.log("Updated Data:", updatedData);
-
+  
       if (
-        Object.keys(updatedData).some(
-          (key) => updatedData[key] !== userData[key]
-        )
+        Object.keys(updatedData).some((key) => updatedData[key] !== userData[key])
       ) {
         const apiUrl = `http://192.168.0.18:8080/api/user/${userData.id}`;
-
-        console.log("Making PUT request with data:", updatedData);
-
-        const response = await axios.put(apiUrl, updatedData);
-
+  
+        console.log("Making PUT request with data:", requestData);
+  
+        const headers = {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json',
+        };
+  
+        const response = await axios.put(apiUrl, requestData, { headers });
+  
         console.log("Response from server:", response);
-
+  
         if (response.status === 200) {
           setUpdateModalVisible(false);
           mostrarToast("Dados do usuário atualizados com sucesso!");
@@ -125,6 +140,8 @@ const UserDetailsScreen = ({ route, navigation }) => {
       console.error("Error updating user details:", error.message);
     }
   };
+  
+   
 
 
   const handleDeleteAccount = async () => {
