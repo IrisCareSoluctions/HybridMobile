@@ -1,14 +1,10 @@
 // import { Poppins_400Regular, Poppins_700Bold, Poppins_800ExtraBold, useFonts } from '@expo-google-fonts/poppins';
-import DateTimePicker from '@react-native-community/datetimepicker';
-import React, { useState } from 'react'
-import { ImageBackground, SafeAreaView, Text, TextInput, Button, ToastAndroid, View, ScrollView } from 'react-native';
-import Colors from '../../../shared/Colors';
-import ButtonDefault, { CalendarButton } from '../../../components/buttons/ButtonDefault';
+import React, { useState } from 'react';
+import { ImageBackground, SafeAreaView, ScrollView, View } from 'react-native';
+import ButtonDefault from '../../../components/Buttons/ButtonDefault';
 import InputDefault from '../../../components/Input/InputDefault';
+import FontGoogle from '../../../components/font/fontGoogle';
 import { styles } from "./styles";
-import { isValidCPF } from "../../../utils/cpfValidation"
-import { formatToDDMMYYYY } from "../../../utils/dataFormatting";
-import FontGoogle from '../../../components/font/FontGoogle';
 
 const ContactScreen = ({ route, navigation }) => {
   const { name, email, password, cpf, birthday, zipCode, number, street, neighborhood, city, state } = route.params;

@@ -1,12 +1,12 @@
 import React, { useState } from 'react'
 
 import { ImageBackground, SafeAreaView, Text, TextInput, ToastAndroid, View, Button, ScrollView } from 'react-native';
-import ButtonDefault from '../../../components/buttons/ButtonDefault';
+import ButtonDefault from '../../../components/Buttons/ButtonDefault';
 import InputDefault from '../../../components/Input/InputDefault';
 import { styles } from "./styles";
-import FontGoogle from '../../../components/font/FontGoogle';
+import FontGoogle from '../../../components/font/fontGoogle';
 import ApiCep from '../../../service/ApiCep'
-import Colors from '../../../shared/Colors';
+import Colors from '../../../Shared/Colors';
 
 
 const AddressScreen = ({ route, navigation }) => {

@@ -1,16 +1,13 @@
 // import { Poppins_400Regular, Poppins_700Bold, Poppins_800ExtraBold, useFonts } from '@expo-google-fonts/poppins';
-import { Ionicons, MaterialIcons } from "@expo/vector-icons";
-import React, { useEffect, useState } from "react";
-import { ImageBackground, SafeAreaView, Text, TextInput, ToastAndroid, TouchableOpacity, View } from 'react-native';
-import Colors from '../../shared/Colors';
-import ButtonDefault from '../../components/buttons/ButtonDefault';
-import { styles } from "./styles";
-import * as Google from 'expo-auth-session/providers/google'
-import AsyncStorage from "@react-native-async-storage/async-storage"
-import FontGoogle from '../../components/font/FontGoogle';
-import * as WebBrowser from "expo-web-browser"
+import { Ionicons } from "@expo/vector-icons";
+import * as WebBrowser from "expo-web-browser";
+import React, { useState } from "react";
+import { ImageBackground, SafeAreaView, Text, ToastAndroid, TouchableOpacity, View } from 'react-native';
 import InputDefault from "../../components/Input/InputDefault";
-import { useAuth } from "../../hooks/AuthContext";
+import ButtonDefault from '../../components/Buttons/ButtonDefault';
+import FontGoogle from '../../components/font/fontGoogle';
+import Colors from '../../Shared/Colors';
+import { styles } from "./styles";
 
 WebBrowser.maybeCompleteAuthSession();
 

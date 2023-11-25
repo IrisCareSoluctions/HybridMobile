@@ -1,7 +1,7 @@
 import { AntDesign } from "@expo/vector-icons";
 import React from 'react'
 import { Text, TouchableOpacity, Dimensions } from 'react-native'; 
-import Colors from '../../shared/Colors';
+import Colors from '../../Shared/Colors';
 import * as WebBrowser from "expo-web-browser";
 
 WebBrowser.maybeCompleteAuthSession();

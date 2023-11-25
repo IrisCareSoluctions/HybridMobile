@@ -2,7 +2,7 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import React, { useEffect, useRef } from 'react';
 import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import Icon, { Icons } from '../icons/Icons';
-import Colors from '../../shared/Colors';
+import Colors from '../../Shared/Colors';
 import ColorScreen from '../../screens/ColorScreen';
 import * as Animatable from 'react-native-animatable';
 import HomePage from '../../screens/homePage/HomePage'; 

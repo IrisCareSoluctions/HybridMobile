@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
 import { ImageBackground, SafeAreaView, ScrollView, Text, ToastAndroid, View } from 'react-native';
-import ButtonDefault from '../../../components/buttons/ButtonDefault';
+import ButtonDefault from '../../../components/Buttons/ButtonDefault';
 import InputDefault from '../../../components/Input/InputDefault';
-import FontGoogle from '../../../components/font/FontGoogle';
+import FontGoogle from '../../../components/font/fontGoogle';
 import { styles } from "./styles";
 
 

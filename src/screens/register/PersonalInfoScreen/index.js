@@ -2,13 +2,13 @@
 import DateTimePicker from '@react-native-community/datetimepicker';
 import React, { useState } from 'react'
 import { ImageBackground, SafeAreaView, Text, ToastAndroid, View, ScrollView } from 'react-native';
-import Colors from '../../../shared/Colors';
-import ButtonDefault, { CalendarButton } from '../../../components/buttons/ButtonDefault';
+import Colors from '../../../Shared/Colors';
+import ButtonDefault, { CalendarButton } from '../../../components/Buttons/ButtonDefault';
 import InputDefault from '../../../components/Input/InputDefault';
 import { styles } from "./styles";
-import { isValidCPF } from "../../../utils/cpfValidation"
-import { formatToDDMMYYYY } from "../../../utils/dataFormatting";
-import FontGoogle from '../../../components/font/FontGoogle';
+import { isValidCPF } from "../../../Utils/cpfValidation"
+import { formatToDDMMYYYY } from "../../../Utils/dataFormatting";
+import FontGoogle from '../../../components/font/fontGoogle';
 
 const PersonalInfoScreen = ({ route, navigation }) => {
   const { name, email, password } = route.params;

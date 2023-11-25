@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { ImageBackground, SafeAreaView, ScrollView, Text, View, ToastAndroid } from 'react-native';
 import Modal from 'react-native-modal';
-import Colors from '../../../shared/Colors';
-import ButtonDefault from '../../../components/buttons/ButtonDefault';
-import FontGoogle from '../../../components/font/FontGoogle';
+import Colors from '../../../Shared/Colors';
+import ButtonDefault from '../../../components/Buttons/ButtonDefault';
+import FontGoogle from '../../../components/font/fontGoogle';
 import { styles } from "./styles";
 import axios from 'axios';
 import { Loading } from '../../../components/Loading/index';

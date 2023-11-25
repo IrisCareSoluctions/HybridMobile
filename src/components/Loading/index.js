@@ -5,7 +5,7 @@ import { ActivityIndicator, StyleSheet, Text, View } from 'react-native';
 export function Loading() {
   return (
     <View style={styles.container}>
-      <Text style={styles.textPrimary}>Loading user data...</Text>
+      <Text style={styles.textPrimary}>Carregando...</Text>
       <ActivityIndicator color='#89FFDB' />
     </View>
   );

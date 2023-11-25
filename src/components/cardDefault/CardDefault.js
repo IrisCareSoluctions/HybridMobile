@@ -1,8 +1,7 @@
+import { AntDesign } from '@expo/vector-icons';
 import React from 'react';
-import { View, Text, Image, TouchableOpacity, StyleSheet } from 'react-native';
-import Colors from '../../shared/Colors';
-import { AntDesign } from '@expo/vector-icons'; 
-import ButtonDefault from '../buttons/ButtonDefault';
+import { Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import Colors from '../../Shared/Colors';
 
 const Card = ({ title, imageSource, onPress, descricao, icon, iconColor }) => (
   <View style={styles.card}>

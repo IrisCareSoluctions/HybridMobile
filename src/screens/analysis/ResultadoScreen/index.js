@@ -8,7 +8,7 @@ import {
   View,
 } from "react-native";
 import { AppContext } from "../../../hooks/context";
-import Colors from "../../../shared/Colors";
+import Colors from "../../../Shared/Colors";
 
 const ResultadoScreen = ({ navigation, route }) => {
   const { image } = route.params;

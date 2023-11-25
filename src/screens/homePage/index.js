@@ -1,13 +1,11 @@
 import React, { useEffect, useState } from 'react';
-import { ImageBackground, SafeAreaView, ScrollView, View } from 'react-native';
+import { ImageBackground, SafeAreaView, ScrollView, Text, View } from 'react-native';
 import { Loading } from '../../components/Loading';
+import ButtonDefault from '../../components/Buttons/ButtonDefault';
 import Card from '../../components/cardDefault/CardDefault';
-import FontGoogle from '../../components/font/FontGoogle';
-import Header from '../../components/hearder/Header';
+import FontGoogle from '../../components/font/fontGoogle';
+import Colors from '../../Shared/Colors';
 import { styles } from "./styles";
-import { Text } from 'react-native';
-import ButtonDefault from '../../components/buttons/ButtonDefault';
-import Colors from '../../shared/Colors';
 
 export default function HomePage({ route, navigation }) {
   const [userData, setUserData] = useState(null);

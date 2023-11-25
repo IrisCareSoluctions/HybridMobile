@@ -1,17 +1,12 @@
-import React, { useEffect, useState } from 'react';
-import { View, Text, ActivityIndicator, SafeAreaView, ImageBackground, ToastAndroid, ScrollView } from 'react-native';
-import { styles } from "./styles";
 import axios from 'axios';
-import { Loading } from '../../../components/Loading/index';
-import FontGoogle from '../../../components/font/FontGoogle';
-import ButtonDefault, { CalendarButton } from '../../../components/buttons/ButtonDefault';
+import React, { useEffect, useState } from 'react';
+import { ImageBackground, SafeAreaView, ScrollView, Text, ToastAndroid, View } from 'react-native';
 import Modal from 'react-native-modal';
-import Colors from '../../../shared/Colors';
+import Colors from '../../../Shared/Colors';
+import ButtonDefault from '../../../components/Buttons/ButtonDefault';
 import InputDefault from '../../../components/Input/InputDefault';
-import { isValidCPF } from "../../../utils/cpfValidation"
-import { formatToDDMMYYYY } from "../../../utils/dataFormatting";
-import DateTimePicker from '@react-native-community/datetimepicker';
-import Icon from '../../../components/icons/Icons';
+import { Loading } from '../../../components/Loading/index';
+import { styles } from "./styles";
 
 const UserDetailsScreen = ({ route, navigation }) => {
   const [userData, setUserData] = useState(null);

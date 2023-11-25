@@ -2,7 +2,7 @@ import React from 'react';
 import { View, TextInput } from 'react-native';
 import { MaterialIcons } from "@expo/vector-icons";
 import { TextInputMask } from 'react-native-masked-text';
-import Colors from '../../shared/Colors';
+import Colors from '../../Shared/Colors';
 
 export default function InputDefault({
   onChangeText,

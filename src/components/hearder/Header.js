@@ -2,7 +2,7 @@ import React from 'react';
 import { View, Image, Text, StyleSheet, TouchableOpacity } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useNavigation } from '@react-navigation/native';
-import Colors from '../../shared/Colors';
+import Colors from '../../Shared/Colors';
 import Icon from '../../components/icons/Icons';
 import FontGoogle from '../font/FontGoogle';
 

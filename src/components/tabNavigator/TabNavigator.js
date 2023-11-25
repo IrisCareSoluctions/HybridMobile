@@ -1,22 +1,18 @@
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import React, { useEffect, useRef, useState } from 'react';
-import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
-import Icon, { Icons } from '../icons/Icons';
-import Colors from '../../shared/Colors';
-import ColorScreen from '../../shared/ColorScreen';
+import { StyleSheet, TouchableOpacity } from 'react-native';
 import * as Animatable from 'react-native-animatable';
-import HomePage from '../../screens/homePage/index';
-import Drawer from '../../components/drawerNavigator/DrawerNavigation';
-import Camera from '../../screens/analysis/CameraScreen/index';
-import CameraScreen from '../../screens/analysis/CameraScreen/index';
-import UserProfileScreen from '../../screens/user/UserProfileScreen';
-import UserDetailsScreen from '../../screens/user/UserDetailsScreen/UserDetailsScreen';
+import Colors from '../../Shared/Colors';
 import { useAuth } from '../../hooks/AuthContext';
+import CameraScreen from '../../screens/analysis/CameraScreen/index';
+import HomePage from '../../screens/homePage/index';
+import UserDetailsScreen from '../../screens/user/UserDetailsScreen/UserDetailsScreen';
+import UserProfileScreen from '../../screens/user/UserProfileScreen';
+import Icon, { Icons } from '../icons/Icons';
 
 const TabArr = [
   { route: 'HomePage', label: 'HomePage', type: Icons.Ionicons, activeIcon: 'home', inActiveIcon: 'home-outline', component: HomePage },
   { route: 'Camera', label: 'Camera', type: Icons.AntDesign, activeIcon: 'camera', inActiveIcon: 'camerao', component: CameraScreen },
-  { route: 'Account', label: 'Account', type: Icons.FontAwesome, activeIcon: 'user-circle', inActiveIcon: 'user-circle-o', component: UserProfileScreen },
   { route: 'UserDetailsScreen', label: 'Account', type: Icons.FontAwesome, activeIcon: 'user-circle', inActiveIcon: 'user-circle-o', component: UserDetailsScreen },
 ];
 

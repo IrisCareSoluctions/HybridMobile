@@ -1,7 +1,7 @@
 import React from 'react';
 import { Image, ImageBackground, SafeAreaView, ScrollView, Text, View } from 'react-native';
 import { styles } from "./styles";
-import FontGoogle from '../../components/font/FontGoogle';
+import FontGoogle from '../../components/font/fontGoogle';
 
 export default function WelcomeHeader() {
     // const {userData, setUserData}=useContext(AuthCon)

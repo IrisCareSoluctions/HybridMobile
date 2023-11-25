@@ -1,7 +1,7 @@
-import { View, Text, TextInput, StyleSheet } from 'react-native'
 import React from 'react'
-import ButtonDefault from '../buttons/ButtonDefault'
+import { StyleSheet, View } from 'react-native'
 import InputDefault from '../Input/InputDefault'
+import ButtonDefault from '../Buttons/ButtonDefault'
 
 export default function SearchBar() {
     return (

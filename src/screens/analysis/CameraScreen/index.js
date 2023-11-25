@@ -14,8 +14,8 @@ import {
   useWindowDimensions
 } from "react-native";
 import { AppContext } from "../../../hooks/context";
-import Colors from "../../../shared/Colors";
-import ButtonDefault from "../../../components/buttons/ButtonDefault";
+import Colors from "../../../Shared/Colors";
+import ButtonDefault from "../../../components/Buttons/ButtonDefault";
 
 export default CameraScreen = ({ navigation }) => {
   const [hasCameraPermission, setHasCameraPermission] = useState(null);

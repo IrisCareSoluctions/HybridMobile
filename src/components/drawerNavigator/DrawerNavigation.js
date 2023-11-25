@@ -1,7 +1,7 @@
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import Camera from '../../screens/analysis/CameraScreen/index';
 import HomePage from '../../screens/homePage/index';
-import Colors from '../../shared/Colors';
+import Colors from '../../Shared/Colors';
 import { ImageBackground, StyleSheet } from 'react-native';
 import { useEffect, useState } from 'react';
 import { View } from 'react-native';
