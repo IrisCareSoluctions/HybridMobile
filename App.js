@@ -52,8 +52,6 @@ export default function App() {
           <Stack.Screen name="CreateChild" component={CreateChild} options={{ headerShown: false }} />
 
           <Stack.Screen name="UserDetail" component={UserDetail} options={{ headerShown: false }} />
-          <Stack.Screen name="UserProfileScreen" component={UserProfileScreen} options={{ headerShown: false }} />
-          <Stack.Screen name="UserUpdateForm" component={UserUpdateForm} options={{ headerShown: false }} />
           <Stack.Screen name="AnalysisLeucocoria" component={AnalysisLeucocoria} options={{ headerShown: false }} />
           <Stack.Screen name="Camera" component={Camera} options={{ headerShown: false }} />
           <Stack.Screen name="Resultado" component={Resultado} options={{ headerShown: false }} />

@@ -42,6 +42,14 @@ const UserDetailsScreen = ({ route, navigation }) => {
     setShowDatePicker(true);
   };
 
+  function formatToDDMMYYYY(date) {
+    const day = date.getDate().toString().padStart(2, '0');
+    const month = (date.getMonth() + 1).toString().padStart(2, '0'); // Mês é base 0, então somamos 1
+    const year = date.getFullYear();
+    return `${day}/${month}/${year}`;
+  }
+  
+
   //CRUD USER - GET (esta listando os dados do usuario  por ID)
   useEffect(() => {
     const fetchUserData = async () => {
@@ -91,6 +99,18 @@ const UserDetailsScreen = ({ route, navigation }) => {
   //CRUD USER - PUT (por id)
   const handleUpdateUserDetails = async () => {
     try {
+      const birthdayDate = new Date(userData.birthday);
+  
+      // Objeto para enviar no corpo da solicitação
+      const requestData = {
+        name: updatedUserData.name || userData.name,
+        cpf: updatedUserData.cpf || userData.cpf,
+        birthday: formatToDDMMYYYY(birthdayDate),
+        email: updatedUserData.email || userData.email,
+        password: updatedUserData.password || userData.password,
+      };
+  
+      // Objeto para exibir no console (mantendo a data no formato original)
       const updatedData = {
         name: updatedUserData.name || userData.name,
         cpf: updatedUserData.cpf || userData.cpf,
@@ -217,7 +237,7 @@ const UserDetailsScreen = ({ route, navigation }) => {
 
             {/* Modal para atualizar */}
             <Modal isVisible={isUpdateModalVisible} style={{ justifyContent: 'center', alignItems: 'center' }}>
-              <View style={{ backgroundColor: Colors.greenSolidTransparent, justifyContent: 'center', alignItems: 'center', width: '90%', height: '80%', borderRadius: 50 }}>
+              <View style={{ backgroundColor: Colors.greenSolidTransparent, justifyContent: 'center', alignItems: 'center', width: '90%', height: '60%', borderRadius: 50 }}>
                 <Text style={styles.textPrimary}>Atualizar Dados</Text>
                 <InputDefault
                   style={styles.input}

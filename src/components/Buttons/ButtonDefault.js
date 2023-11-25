@@ -11,7 +11,7 @@ const { width, height } = Dimensions.get('window');
 export default function ButtonDefault({ onPress, title, variant, style, fontSize = 18, icon, iconColor }) {
   const buttonStyle = variant === 'secondary' ? {
     backgroundColor: Colors.greenSolid,
-    borderColor: Colors.greenSolid,
+    borderColor: Colors.green,
   } : variant === 'cancel' ? {
     backgroundColor: "red",
     borderColor: "#C2000B",
