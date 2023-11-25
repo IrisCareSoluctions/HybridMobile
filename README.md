@@ -18,6 +18,24 @@
 | `PUT`    | `/api/user/{id}`                             | Atualiza detalhes de um usuário específico.    |
 | `DELETE` | `/api/user/{id}`                             | Desativa um usuário específico.                |
 
+<br/>
+<br/>
+
+# Instruções de utilização
+
+1. Clone o repositorio da API apringboot
+`https://github.com/IrisCareSoluctions/DigitalBusiness.git`
+2. Abra o terminal, navegue até o diretorio da pasta do repositorio e rode o **springboot** com o seguinte comando: 
+`.\mvnw spring-boot:run
+3. Clone ester repositorio **react-native expo** 
+`https://github.com/IrisCareSoluctions/HybridMobile.git` 
+4. Abra o repositorio e rode os seguintes comandos:
+   - `npm install` -> baixar as bibliotecas presentes  o projeto
+   - `npx expo start` -> abrindo o projeto com expo
+   - escolha a opção que preferir, ler o QRCODE, ou digite `a` para abrir o emulador
+
+`
+`
 
 ### Tela de Autenticação
 ---
