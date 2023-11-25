@@ -99,7 +99,6 @@ export default function Login({ navigation }) {
           token: responseBody.token,
         }));
 
-        // Confirmando ID
         console.log("User ID:", responseBody.id);
         console.log("TabNavigator", { id: responseBody.id });
 
@@ -109,7 +108,7 @@ export default function Login({ navigation }) {
           params: { id: responseBody.id },
         },
         {
-          screen: 'UserDetailsScreen',
+          screen: 'HomePage',
           params: { id: responseBody.id },
         });
 
@@ -135,12 +134,6 @@ export default function Login({ navigation }) {
       >
 
         <FontGoogle />
-
-        {/* <View style={styles.textContainer}>
-          <Text style={styles.textPrimary}>IrisCare</Text>
-          <Text style={styles.textPrimary}>Solutions</Text>
-          <Text style={styles.textSecondary}>Global Solution</Text>
-        </View> */}
 
         <View style={styles.containerLogin}>
           <View style={styles.backgraundLogin}>
@@ -175,19 +168,12 @@ export default function Login({ navigation }) {
               <View style={styles.underline} />
             </View>
 
-            {/* <Text style={{ color: "white" }}>{JSON.stringify(userInfo)}</Text>
-            <Text style={{ color: "red" }}>{JSON.stringify(token)}</Text> */}
-
-            <View style={styles.underlineContainer}>
+             <View style={styles.underlineContainer}>
               <TouchableOpacity style={styles.touchableOpacity} onPress={() => { promptAsync() }}>
                 <Ionicons name="logo-google" size={25} color="white" style={{ marginRight: 10 }} />
                 <Text style={{ color: Colors.whiteSolid }}>ENTRE COM GOOGLE</Text>
               </TouchableOpacity>
 
-              {/* <TouchableOpacity style={styles.touchableOpacity} onPress={async () => await AsyncStorage.removeItem("@user")}>
-                <Ionicons name="logo-google" size={25} color="white" style={{ marginRight: 10 }} />
-                <Text style={{ color: Colors.whiteSolid }}>SAIR COM GOOGLE</Text>
-              </TouchableOpacity> */}
             </View>
 
             <View style={styles.containerCadastro}>
