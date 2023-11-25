@@ -17,25 +17,51 @@
 | `GET`    | `/api/user/{id}`                             | Obtém detalhes de um usuário específico.       |
 | `PUT`    | `/api/user/{id}`                             | Atualiza detalhes de um usuário específico.    |
 | `DELETE` | `/api/user/{id}`                             | Desativa um usuário específico.                |
-| `POST`   | `/api/user/{id}/children`                    | Registra um novo filho para um usuário.        |
-| `GET`    | `/api/user/{id}/children/{childId}`          | Obtém detalhes de um filho específico.         |
-| `GET`    | `/api/user/{id}/children`                    | Obtém todos os filhos de um usuário.           |
-| `PUT`    | `/api/user/{id}/children/{childId}`          | Atualiza detalhes de um filho específico.      |
-| `PUT`    | `/api/user/{id}/children/{childId}/active`   | Atualiza o status ativo de um filho específico.|
-| `PUT`    | `/api/user/{id}/phone`                       | Atualiza o telefone de um usuário.            |
-| `PUT`    | `/api/user/{id}/address`                     | Atualiza o endereço de um usuário.            |
- 
+
 
 ### Tela de Autenticação
+---
 
-Permitir que os usuários façam login.
+Permitir que os usuários façam login com authentication token.
 
 - Campos:
-  - Nome de usuário (ou e-mail)
+  - e-mail 
   - Senha
 
 - Operação:
-  - Enviar solicitação de autenticação para `POST /api/user/login`.
+  - Enviar solicitação de autenticação para `POST http://localhost:8080/api/user/login`.
+
+```
+{
+  "email": "string",
+  "password": "string"
+}
+```
+
+### Tela de Registro de Usuário
+---
+
+Permitir que novos usuários se registrem.
+
+- Campos:
+  - Nome Completo
+  - CPF
+  - Data de Nascimento
+  - E-mail
+  - Senha
+    - Endereço:
+      - CEP
+      - Número
+      - Rua
+      - Bairro
+      - Cidade
+      - Estado
+    - Telefone:
+       - DDD
+       - Número
+
+- Operação:
+  - Enviar solicitação de registro para `POST http://localhost:8080/api/user/signup`.
 
 ```
 {
@@ -57,29 +83,118 @@ Permitir que os usuários façam login.
     "number": "string"
   }
 }
+```
+
+### Tela de Detalhes do Usuário
+---
+
+Esta tela obtém detalhes de um usuário específico.
+
+### Campos
+
+- **Nome Completo**
+- **CPF**
+- **Data de Nascimento**
+- **E-mail**
+- **Senha**
+- **Endereço:**
+  - CEP
+  - Número
+  - Rua
+  - Bairro
+  - Cidade
+  - Estado
+- **Telefone:**
+  - DDD
+  - Número
+- **Filhos (se houver):**
+  - Lista de Filhos
+
+
+- Operação:
+  - Enviar solicitação para obter os dados de registro para `GET http://localhost:8080/api/user/{id}`.
+
+
+```json
+{
+  "name": "string",
+  "cpf": "string",
+  "birthday": "string",
+  "email": "string",
+  "password": "string",
+  "active": true,
+  "phone": {
+    "ddd": "string",
+    "number": "string"
+  },
+  "address": {
+    "zipCode": "string",
+    "number": "string",
+    "street": "string",
+    "neighborhood": "string",
+    "city": "string",
+    "state": "string"
+  },
+    "children": []
+}
 
 ```
 
+## Tela de Atualização do Usuário
 
----
-
-## Tela de Registro de Usuário
-
-Permitir que novos usuários se registrem.
+Esta tela atualiza detalhes de um usuário específico.
 
 - Campos:
-  - Nome de usuário
-  - Senha
+  - Nome Completo
+  - CPF (não será atualizado - valor fixo de criação)
+  - Data de Nascimento (não será atualizado - valor fixo de criação)
   - E-mail
-  - Primeiro nome
-  - Último nome
+  - Senha
+
 
 - Operação:
-  - Enviar solicitação de registro para `POST /api/user/signup`.
+  - Enviar solicitação de atualização de registro para `PUT http://localhost:8080/api/user/{id}`.
+
+
+```json
+{
+  "name": "string",
+  "cpf": "string",
+  "birthday": "string",
+  "email": "string",
+  "password": "string"
+}
+```
+
+## Tela de exclução do Usuário
+
+Desativa um usuário específico.
+
+- Campos:
+  - Nome Completo
+  - CPF (não será atualizado - valor fixo de criação)
+  - Data de Nascimento (não será atualizado - valor fixo de criação)
+  - E-mail
+  - Senha
+
+
+- Operação:
+  - Enviar solicitação de exclução de usuario para `DELETE http://localhost:8080/api/user/{id}`.
+
+
+```json
+[
+  {
+    "type": "string",
+    "message": "string"
+  }
+]
+
+```
+## Para documentação completa do projeto acessar:    
+  https://api-iriscare.azurewebsites.net/swagger-ui/index.html#/
 
 ---
-
-
 # Desenvolvedores:
 
     -> RM: 93915 -  JAELSON DOS SANTOS
@@ -102,7 +217,7 @@ Permitir que novos usuários se registrem.
         <img align="center" height="100" width="100" style="border-radius: 50%;" src="https://avatars.githubusercontent.com/u/92834827?v=4" />
     </a>
     <a href="https://github.com/natmaia">
-        <img align="center" height="100" width="100" style="border-radius: 50%;" src="https://github.com/natmaia/arquivosFotosReadme/blob/main/fotoperfil.jpg" />
+        <img align="center" height="100" width="100" style="border-radius: 50%;" src="https://avatars.githubusercontent.com/u/105464103?s=96&v=4" />
     </a>
     <a href="https://github.com/gsrafaela">
         <img align="center" height="100" width="100" style="border-radius: 50%;" src="https://avatars.githubusercontent.com/u/99452621?v=4" />
