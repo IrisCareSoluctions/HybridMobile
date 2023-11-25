@@ -88,18 +88,6 @@ const UserDetailsScreen = ({ route, navigation }) => {
 
   const handleUpdateUserDetails = async () => {
     try {
-      const birthdayDate = new Date(userData.birthday);
-  
-      //Separeio Objeto para enviar no corpo da solicitação
-      const requestData = {
-        name: updatedUserData.name || userData.name,
-        cpf: updatedUserData.cpf || userData.cpf,
-        birthday: formatToDDMMYYYY(birthdayDate),
-        email: updatedUserData.email || userData.email,
-        password: updatedUserData.password || userData.password,
-      };
-  
-      // Objeto para exibir no console (mantendo a data no formato original) -> Entender o que estava rolando
       const updatedData = {
         name: updatedUserData.name || userData.name,
         cpf: updatedUserData.cpf || userData.cpf,
