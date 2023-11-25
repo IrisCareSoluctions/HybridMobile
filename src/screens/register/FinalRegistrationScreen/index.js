@@ -16,6 +16,8 @@ const FinalRegistrationScreen = ({ route, navigation }) => {
   const [isLoading, setIsLoading] = useState(false);
   const [isModalVisible, setModalVisible] = useState(false);
 
+
+  //CRUD USER - POST
   const finalizarCadastro = async () => {
     try {
       const userData = {

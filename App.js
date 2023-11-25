@@ -12,10 +12,16 @@ import TabNavigator from './src/components/tabNavigator/TabNavigator';
 
 import HomePage from './src/screens/homePage/index';
 
-//User
+//User Crud - Regiter Post
+import InitialRegistrationRegistre from './src/screens/register/InitialRegistrationScreen';
+import PersonalInfoRegistre from './src/screens/register/PersonalInfoScreen';
+import AddressRegistre from './src/screens/register/AddressScreen';
+import ContactRegistre from './src/screens/register/ContactScreen';
+import FinalRegistrationRegistre from './src/screens/register/FinalRegistrationScreen';
+
+//User Crud - GET, PUT E DELETE por id
 import UserDetail from './src/screens/user/UserDetailsScreen/UserDetailsScreen';
-import UserProfileScreen from './src/screens/user/UserProfileScreen'
-import UserUpdateForm from './src/screens/user/UserUpdateForm';
+
 
 //Children
 import CreateChild from './src/screens/children/CreateChildScreen/CreateChildScreen';
@@ -26,12 +32,6 @@ import Camera from './src/screens/analysis/CameraScreen';
 import Resultado from './src/screens/analysis/ResultadoScreen';
 import AgradecimentoScreen from './src/screens/analysis/AgradecimentoScreen';
 
-//Regiter
-import InitialRegistrationRegistre from './src/screens/register/InitialRegistrationScreen';
-import PersonalInfoRegistre from './src/screens/register/PersonalInfoScreen';
-import AddressRegistre from './src/screens/register/AddressScreen';
-import ContactRegistre from './src/screens/register/ContactScreen';
-import FinalRegistrationRegistre from './src/screens/register/FinalRegistrationScreen';
 
 const Stack = createNativeStackNavigator();
 
