@@ -1,12 +1,14 @@
 import { AntDesign } from "@expo/vector-icons";
 import React from 'react'
-import { Text, TouchableOpacity } from 'react-native';
+import { Text, TouchableOpacity, Dimensions } from 'react-native'; 
 import Colors from '../../shared/Colors';
 import * as WebBrowser from "expo-web-browser";
 
 WebBrowser.maybeCompleteAuthSession();
 
-export default function ButtonDefault({ onPress, title, variant, style }) {
+const { width, height } = Dimensions.get('window'); 
+
+export default function ButtonDefault({ onPress, title, variant, style, fontSize = 18, icon, iconColor }) {
   const buttonStyle = variant === 'secondary' ? {
     backgroundColor: Colors.greenSolid,
     borderColor: Colors.greenSolid,
@@ -49,7 +51,7 @@ export default function ButtonDefault({ onPress, title, variant, style }) {
       activeOpacity={0.7}
       style={{
         height: 50,
-        width: 150,
+        width: width * 0.4,
         alignItems: 'center',
         justifyContent: 'center',
         borderWidth: 2,
@@ -57,7 +59,7 @@ export default function ButtonDefault({ onPress, title, variant, style }) {
         margin: 20,
         alignSelf: 'center',
         borderRadius: 10,
-        fontSize: 18,
+        fontSize: fontSize,
         ...buttonStyle,
         ...style,
       }}
@@ -65,27 +67,27 @@ export default function ButtonDefault({ onPress, title, variant, style }) {
       <Text
         style={{
           color: Colors.whiteSolid,
-          fontSize: 18,
+          fontSize: fontSize, // Use the provided fontSize
           textTransform: "uppercase",
           fontWeight: 'bold',
+          ...textStyles,
         }}
       >
         {title}
       </Text>
-      {variant === 'litler' && <AntDesign name="search1" size={20} color={Colors.whiteSolid} style={{ justifyContent: "center", alignItems: "center" }} />}
+      {variant === 'litler'  && <AntDesign name={icon} size={20} color={iconColor} style={{ justifyContent: "center", alignItems: "center" }} />}
     </TouchableOpacity>
   );
 }
 
 export const CalendarButton = ({ onPress, title, selectedDate }) => {
-
   return (
     <TouchableOpacity
       onPress={onPress}
       activeOpacity={0.7}
       style={{
         height: 50,
-        width: "80%",
+        width: width * 0.8, 
         justifyContent: 'center',
         borderWidth: 1,
         margin: 20,

@@ -11,6 +11,7 @@ import InputDefault from '../../../components/Input/InputDefault';
 import { isValidCPF } from "../../../utils/cpfValidation"
 import { formatToDDMMYYYY } from "../../../utils/dataFormatting";
 import DateTimePicker from '@react-native-community/datetimepicker';
+import Icon from '../../../components/icons/Icons';
 
 const UserDetailsScreen = ({ route, navigation }) => {
   const [userData, setUserData] = useState(null);
@@ -71,9 +72,8 @@ const UserDetailsScreen = ({ route, navigation }) => {
 
   if (isLoading) {
     return (
-      <View>
-        <ActivityIndicator size="large" color="#0000ff" />
-        <Text>Loading user data...</Text>
+      <View style={styles.container}>
+        <Loading/>
       </View>
     );
   }
@@ -81,25 +81,36 @@ const UserDetailsScreen = ({ route, navigation }) => {
   if (!userData) {
     return (
       <View>
-        <Text>Error loading user data.</Text>
+        <Text style={styles.textPrimary}>Error loading user data.</Text>
       </View>
     );
   }
 
   const handleUpdateUserDetails = async () => {
-      try {
+    try {
+      const updatedData = {
+        name: updatedUserData.name || userData.name,
+        cpf: updatedUserData.cpf || userData.cpf,
+        birthday: formatToDDMMYYYY(new Date(updatedUserData.birthday || userData.birthday)),
+        email: updatedUserData.email || userData.email,
+        password: updatedUserData.password || userData.password,
+      };
+
+      console.log("Updated Data:", updatedData);
+
+      if (
+        Object.keys(updatedData).some(
+          (key) => updatedData[key] !== userData[key]
+        )
+      ) {
         const apiUrl = `http://192.168.0.18:8080/api/user/${userData.id}`;
-    
-        const updatedData = {
-          name: updatedUserData.name || userData.name,
-          cpf: updatedUserData.cpf || userData.cpf,
-          birthday: updatedUserData.birthday || userData.birthday,
-          email: updatedUserData.email || userData.email,
-          password: updatedUserData.password || userData.password,
-        };
-    
+
+        console.log("Making PUT request with data:", updatedData);
+
         const response = await axios.put(apiUrl, updatedData);
-    
+
+        console.log("Response from server:", response);
+
         if (response.status === 200) {
           setUpdateModalVisible(false);
           mostrarToast("Dados do usuário atualizados com sucesso!");
@@ -107,10 +118,15 @@ const UserDetailsScreen = ({ route, navigation }) => {
         } else {
           console.error("Error updating user details:", response.statusText);
         }
-      } catch (error) {
-        console.error("Error updating user details:", error.message);
+      } else {
+        console.log("No changes to update.");
       }
-    };
+    } catch (error) {
+      console.error("Error updating user details:", error.message);
+    }
+  };
+
+
   const handleDeleteAccount = async () => {
     const id = route.params?.id;
 
@@ -121,7 +137,7 @@ const UserDetailsScreen = ({ route, navigation }) => {
       if (response.status === 204) {
         navigation.navigate('Login');
         mostrarToast("Usuário excluído");
-        setDeleteModalVisible(false); // Fechar o modal após a exclusão
+        setDeleteModalVisible(false); 
       } else {
         console.error("Error deleting user account:", response.statusText);
       }
@@ -129,28 +145,28 @@ const UserDetailsScreen = ({ route, navigation }) => {
       console.error("Error deleting user account:", error.message);
     }
   };
-  const handleUpdateUserName = () => {
-    if (!newUserName) {
-      mostrarToast('Digite o novo nome.');
-      return;
-    }
 
-    updateUserName(userData.id, newUserName);
-  };
+
 
   return (
     <SafeAreaView style={styles.container}>
       <ImageBackground
-        source={require('../../../assets/HomeBackgraundLogin.png')}
+        source={require('../../../../assets/HomeBackgraundLogin.png')}
         style={styles.backgroundImage}
       >
-        <FontGoogle />
+        {/* <FontGoogle /> */}
 
         <ScrollView style={styles.containerScroll} keyboardShouldPersistTaps="handled">
           <View style={styles.containerInput} >
 
             <View style={styles.textContainer}>
-              <Text style={styles.textPrimary}>Dados do Cadastro:</Text>
+
+              <Text style={styles.textPrimary}>Dados</Text>
+              <Text style={styles.textPrimary}>Cadastrados</Text>
+              <View style={styles.underlineContainer}>
+                <View style={styles.underline} />
+              </View>
+
 
               <View style={{ flexDirection: 'row', justifyContent: 'flex-start', alignItems: 'center' }}>
                 <Text style={styles.textSecondary}>Nome:</Text>
@@ -202,6 +218,7 @@ const UserDetailsScreen = ({ route, navigation }) => {
                   onChangeText={(text) => setUpdatedUserData((prevData) => ({ ...prevData, name: text }))}
                 />
 
+
                 <InputDefault
                   style={styles.input}
                   placeholder={userData.cpf}
@@ -226,16 +243,8 @@ const UserDetailsScreen = ({ route, navigation }) => {
                   onChangeText={(text) => setUpdatedUserData((prevData) => ({ ...prevData, password: text }))}
                 />
 
-                <InputDefault
-                  style={styles.input}
-                  placeholder={userData.birthday}
-                  keyboardType="number-pad"
-                  value={updatedUserData.birthday}
-                  onChangeText={(text) => setUpdatedUserData((prevData) => ({ ...prevData, birthday: text }))}
-                />
-
                 <View style={{ flexDirection: "row" }}>
-                  <ButtonDefault title="Cancelar" onPress={() => setUpdateModalVisible(false)} variant="secondary" style={{ width: '35%' }} />
+                  <ButtonDefault title="Cancelar" onPress={() => setUpdateModalVisible(false)} variant="secondary" style={{ width: '40%' }} />
                   <ButtonDefault title="Confirmar" onPress={handleUpdateUserDetails} style={{ width: '40%' }} />
                 </View>
               </View>
@@ -245,7 +254,7 @@ const UserDetailsScreen = ({ route, navigation }) => {
               <View style={{ backgroundColor: Colors.greenSolidTransparent, justifyContent: 'center', alignItems: 'center', width: '90%', height: '40%', borderRadius: 50 }}>
                 <Text style={styles.textPrimary}>Confirma que deseja cancelar sua conta?! </Text>
                 <View style={{ flexDirection: "row" }}>
-                  <ButtonDefault title="Cancelar" onPress={() => setDeleteModalVisible(false)} variant="secondary" style={{ width: '35%' }} />
+                  <ButtonDefault title="Cancelar" onPress={() => setDeleteModalVisible(false)} variant="secondary" style={{ width: '40%' }} />
                   <ButtonDefault title="Confirmar" onPress={handleDeleteAccount} variant="cancel" style={{ width: '40%' }} />
                 </View>
               </View>

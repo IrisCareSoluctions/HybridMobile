@@ -28,7 +28,7 @@ export const styles = StyleSheet.create({
     textContainer: {
         width: '100%',
         //height: '100%',
-        top: 90,
+        top: 50,
         left: 35,
     },
     textPrimary: {

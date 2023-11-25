@@ -1,5 +1,5 @@
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import Icon, { Icons } from '../icons/Icons';
 import Colors from '../../shared/Colors';
@@ -11,10 +11,11 @@ import Camera from '../../screens/analysis/CameraScreen/index';
 import CameraScreen from '../../screens/analysis/CameraScreen/index';
 import UserProfileScreen from '../../screens/user/UserProfileScreen';
 import UserDetailsScreen from '../../screens/user/UserDetailsScreen/UserDetailsScreen';
+import { useAuth } from '../../hooks/AuthContext';
 
 const TabArr = [
   { route: 'HomePage', label: 'HomePage', type: Icons.Ionicons, activeIcon: 'home', inActiveIcon: 'home-outline', component: HomePage },
-  { route: 'Camera', label: 'Camera', type: Icons.MaterialCommunityIcons, activeIcon: 'heart-plus', inActiveIcon: 'heart-plus-outline', component: CameraScreen },
+  { route: 'Camera', label: 'Camera', type: Icons.AntDesign, activeIcon: 'camera', inActiveIcon: 'camerao', component: CameraScreen },
   { route: 'Account', label: 'Account', type: Icons.FontAwesome, activeIcon: 'user-circle', inActiveIcon: 'user-circle-o', component: UserProfileScreen },
   { route: 'UserDetailsScreen', label: 'Account', type: Icons.FontAwesome, activeIcon: 'user-circle', inActiveIcon: 'user-circle-o', component: UserDetailsScreen },
 ];
@@ -30,7 +31,7 @@ const Tab = createBottomTabNavigator();
 
 const TabButton = (props) => {
   const { route, navigation } = props;
-  const { id } = route.params || {};
+  const { id } = route.params?.user || {};
   const { item, onPress, accessibilityState } = props;
   const focused = accessibilityState.selected;
   const viewRef = useRef(null);
@@ -60,7 +61,40 @@ const TabButton = (props) => {
   )
 }
 
-export default function TabNavigator() {
+export default function TabNavigator({ route, navigation }) {
+  const { authData } = useAuth();
+  const { id } = authData;
+
+  const [userData, setUserData] = useState(null);
+  const [isLoading, setLoading] = useState(true);
+
+  useEffect(() => {
+    // Lógica para obter dados do usuário a partir do ID
+    const fetchUserData = async () => {
+      if (id) {
+        try {
+          const apiUrl = `http://192.168.0.18:8080/api/user/${id}`;
+          const response = await fetch(apiUrl);
+
+          if (response.ok) {
+            const userJson = await response.json();
+            setUserData(userJson);
+            setLoading(false);
+            console.log("User Data:", userJson);
+          } else {
+            console.error("Error fetching user data:", response.statusText);
+            setLoading(false);
+          }
+        } catch (error) {
+          console.error("Error fetching user data:", error.message);
+          setLoading(false);
+        }
+      }
+    };
+
+    fetchUserData();
+  }, [id]);
+
   return (
     <Tab.Navigator
       screenOptions={{
@@ -76,20 +110,22 @@ export default function TabNavigator() {
         }
       }}
     >
-      {TabArr.map((item, index) => {
-        return (
-          <Tab.Screen key={index} name={item.route} component={item.component}
-            options={({ route, navigation }) => ({
-              tabBarShowLabel: false,
-              tabBarButton: (props) => <TabButton {...props} item={item} route={route} navigation={navigation} />
-            })}
-          />
-        )
-      })}
+      {TabArr.map((item, index) => (
+        <Tab.Screen
+          key={index}
+          name={item.route}
+          component={item.component}
+          options={({ route, navigation }) => ({
+            tabBarShowLabel: false,
+            tabBarButton: (props) => (
+              <TabButton {...props} item={item} route={route} navigation={navigation} />
+            ),
+          })}
+        />
+      ))}
     </Tab.Navigator>
-  )
+  );
 }
-
 const styles = StyleSheet.create({
   container: {
     flex: 1,

@@ -1,16 +1,20 @@
 import React from 'react';
 import { View, Text, Image, TouchableOpacity, StyleSheet } from 'react-native';
 import Colors from '../../shared/Colors';
+import { AntDesign } from '@expo/vector-icons'; 
+import ButtonDefault from '../buttons/ButtonDefault';
 
-const Card = ({ title, imageSource, onPress, descricao }) => (
+const Card = ({ title, imageSource, onPress, descricao, icon, iconColor }) => (
   <View style={styles.card}>
     <Image source={imageSource} style={styles.image} />
     <Text style={styles.title}>{title}</Text>
     <Text style={styles.descricao}>{descricao}</Text>
     <View style={styles.containerButton}>
       <TouchableOpacity style={styles.button} onPress={onPress}>
-        <Text style={styles.buttonText}>Ver Mais</Text>
+        {/* <Text style={styles.buttonText}>Ver Mais</Text> */}
+        <AntDesign  name={icon} size={20} color={iconColor} />
       </TouchableOpacity>
+
     </View>
   </View>
 );
@@ -52,11 +56,11 @@ const styles = StyleSheet.create({
     //alignItems: "baseline",
     color: Colors.whiteSolid,
   },
-    containerButton:{
+  containerButton: {
     width: "90%",
     height: 50,
     top: 10,
-    justifyContent:"flex-start",
+    justifyContent: "flex-start",
     alignItems: "flex-end",
     //backgroundColor: "red",
   },

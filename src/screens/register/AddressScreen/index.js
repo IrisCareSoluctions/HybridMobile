@@ -6,6 +6,7 @@ import InputDefault from '../../../components/Input/InputDefault';
 import { styles } from "./styles";
 import FontGoogle from '../../../components/font/FontGoogle';
 import ApiCep from '../../../service/ApiCep'
+import Colors from '../../../shared/Colors';
 
 
 const AddressScreen = ({ route, navigation }) => {
@@ -104,7 +105,7 @@ const AddressScreen = ({ route, navigation }) => {
                 keyboardType="number-pad"
                 format={'XXXXX-XXX'}
               />
-              <ButtonDefault onPress={buscarCEP} variant="litler" />
+              <ButtonDefault onPress={buscarCEP} variant="litler" icon={"search1"} iconColor={Colors.whiteSolid}/>
             </View>
 
             <InputDefault

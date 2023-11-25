@@ -10,6 +10,7 @@ import AsyncStorage from "@react-native-async-storage/async-storage"
 import FontGoogle from '../../components/font/FontGoogle';
 import * as WebBrowser from "expo-web-browser"
 import InputDefault from "../../components/Input/InputDefault";
+import { useAuth } from "../../hooks/AuthContext";
 
 WebBrowser.maybeCompleteAuthSession();
 
@@ -50,28 +51,28 @@ export default function Login({ navigation }) {
 
   const goToNextScreen = async () => {
     // Email validation using regex
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailRegex.test(user.email)) {
-      mostrarToast("O e-mail deve ser válido");
-      return;
-    }
-  
+    // const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    // if (!emailRegex.test(user.email)) {
+    //   mostrarToast("O e-mail deve ser válido");
+    //   return;
+    // }
+
     if (user.email === "") {
       mostrarToast("O e-mail é obrigatório");
       return;
     }
-  
+
     if (user.password === "") {
       mostrarToast("A password é obrigatória");
       return;
     }
-  
+
     try {
       const data = {
         email: user.email,
         password: user.password,
       };
-  
+
       const response = await fetch("http://192.168.0.18:8080/api/user/login", {
         method: "POST",
         headers: {
@@ -80,7 +81,7 @@ export default function Login({ navigation }) {
         },
         body: JSON.stringify(data),
       });
-  
+
       const responseBody = await response.json();
 
       if (responseBody.active === false) {
@@ -88,21 +89,31 @@ export default function Login({ navigation }) {
         navigation.navigate('Login');
         return;
       }
-  
+
       if (response.status === 200) {
+        setAcesso(responseBody.id, responseBody.token);
         console.log("User Info:", responseBody);
         setAcesso((prevAcesso) => ({
           ...prevAcesso,
           id: responseBody.id,
           token: responseBody.token,
         }));
-  
+
         // Confirmando ID
         console.log("User ID:", responseBody.id);
         console.log("TabNavigator", { id: responseBody.id });
-  
+
         mostrarToast("Login realizado com sucesso!");
-        navigation.navigate('TabNavigator', { screen: 'UserDetailsScreen', params: { id: responseBody.id } });
+        navigation.navigate('TabNavigator', {
+          screen: 'HomePage',
+          params: { id: responseBody.id },
+        },
+        {
+          screen: 'UserDetailsScreen',
+          params: { id: responseBody.id },
+        });
+
+
       } else if (response.status === 400) {
         mostrarToast("Cadastro não encontrado");
       } else if (response.status === 404) {
@@ -113,88 +124,88 @@ export default function Login({ navigation }) {
       console.error(error);
     }
   };
-  
 
 
-    return (
-      <SafeAreaView style={styles.container}>
-        <ImageBackground
-          source={require('../../../assets/HomeBackgraundLogin.png')}
-          style={styles.backgroundImage}
-        >
 
-          <FontGoogle />
+  return (
+    <SafeAreaView style={styles.container}>
+      <ImageBackground
+        source={require('../../../assets/HomeBackgraundLogin.png')}
+        style={styles.backgroundImage}
+      >
 
-          {/* <View style={styles.textContainer}>
+        <FontGoogle />
+
+        {/* <View style={styles.textContainer}>
           <Text style={styles.textPrimary}>IrisCare</Text>
           <Text style={styles.textPrimary}>Solutions</Text>
           <Text style={styles.textSecondary}>Global Solution</Text>
         </View> */}
 
-          <View style={styles.containerLogin}>
-            <View style={styles.backgraundLogin}>
+        <View style={styles.containerLogin}>
+          <View style={styles.backgraundLogin}>
 
-              <View style={styles.inputWrapper}>
-                <InputDefault
-                  placeholder="Digite seu e-mail"
-                  value={user.email}
-                  onChangeText={changeEmail}
-                  icon="person"
-                  keyboardType="email-address"
-                />
-              </View>
+            <View style={styles.inputWrapper}>
+              <InputDefault
+                placeholder="Digite seu e-mail"
+                value={user.email}
+                onChangeText={changeEmail}
+                icon="person"
+                keyboardType="email-address"
+              />
+            </View>
 
-              <View style={styles.inputWrapper}>
-                <InputDefault
-                  placeholder="Digite sua senha"
-                  value={user.password}
-                  onChangeText={changeSenha}
-                  icon="lock"
-                  keyboardType="default"
-                  secureTextEntry
-                />
-              </View>
-              <ButtonDefault title="Entrar" onPress={goToNextScreen} />
+            <View style={styles.inputWrapper}>
+              <InputDefault
+                placeholder="Digite sua senha"
+                value={user.password}
+                onChangeText={changeSenha}
+                icon="lock"
+                keyboardType="default"
+                secureTextEntry
+              />
+            </View>
+            <ButtonDefault title="Entrar" onPress={goToNextScreen} />
 
-              <View style={styles.underlineContainer}>
-                <View style={styles.underline} />
-                <Text style={{ color: "#89FFDB" }}>
-                  or
-                </Text>
-                <View style={styles.underline} />
-              </View>
+            <View style={styles.underlineContainer}>
+              <View style={styles.underline} />
+              <Text style={{ color: "#89FFDB" }}>
+                or
+              </Text>
+              <View style={styles.underline} />
+            </View>
 
-              {/* <Text style={{ color: "white" }}>{JSON.stringify(userInfo)}</Text>
+            {/* <Text style={{ color: "white" }}>{JSON.stringify(userInfo)}</Text>
             <Text style={{ color: "red" }}>{JSON.stringify(token)}</Text> */}
 
-              <View style={styles.underlineContainer}>
-                <TouchableOpacity style={styles.touchableOpacity} onPress={() => { promptAsync() }}>
-                  <Ionicons name="logo-google" size={25} color="white" style={{ marginRight: 10 }} />
-                  <Text style={{ color: Colors.whiteSolid }}>ENTRE COM GOOGLE</Text>
-                </TouchableOpacity>
+            <View style={styles.underlineContainer}>
+              <TouchableOpacity style={styles.touchableOpacity} onPress={() => { promptAsync() }}>
+                <Ionicons name="logo-google" size={25} color="white" style={{ marginRight: 10 }} />
+                <Text style={{ color: Colors.whiteSolid }}>ENTRE COM GOOGLE</Text>
+              </TouchableOpacity>
 
-                {/* <TouchableOpacity style={styles.touchableOpacity} onPress={async () => await AsyncStorage.removeItem("@user")}>
+              {/* <TouchableOpacity style={styles.touchableOpacity} onPress={async () => await AsyncStorage.removeItem("@user")}>
                 <Ionicons name="logo-google" size={25} color="white" style={{ marginRight: 10 }} />
                 <Text style={{ color: Colors.whiteSolid }}>SAIR COM GOOGLE</Text>
               </TouchableOpacity> */}
-              </View>
+            </View>
 
-              <View style={styles.containerCadastro}>
-                <Text style={styles.textoRodape}>
-                  Não possui conta?
-                  <Text
-                    style={styles.textoLink}
-                    onPress={() => navigation.navigate("InitialRegistrationRegistre")}
-                  >
-                    {" "}
-                    Criar conta
-                  </Text>
+            <View style={styles.containerCadastro}>
+              <Text style={styles.textoRodape}>
+                Não possui conta?
+                <Text
+                  style={styles.textoLink}
+                  onPress={() => navigation.navigate("InitialRegistrationRegistre")}
+                >
+                  {" "}
+                  Criar conta
                 </Text>
-              </View>
+              </Text>
             </View>
           </View>
-        </ImageBackground>
-      </SafeAreaView>
-    );
-  }
+        </View>
+      </ImageBackground>
+    </SafeAreaView>
+  );
+}
 

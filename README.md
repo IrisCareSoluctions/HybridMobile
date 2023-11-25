@@ -1,7 +1,84 @@
 # IrisCare Soluctions
 
-    Aplicativo mobile para prevenção e controle do Retinoblastoma por meio da análise de imagem, 
-    controle periodico e encaminhamento para Secretaria Municipal e GRAACC.
+    O IrisCare é um aplicativo móvel desenvolvido para a prevenção e controle do Retinoblastoma, uma forma de câncer ocular, por meio da análise de imagem, controle periódico e encaminhamento para a Secretaria Municipal e GRAACC.
+
+# 
+
+# Endpoints
+
+    Para teste de CRUD principal escolhemos o User.
+
+    ## Endpoints da API
+
+| Método   | Endpoint                                     | Descrição                                      |
+|----------|----------------------------------------------|------------------------------------------------|
+| `POST`   | `/api/user/login`                            | Autentica um usuário.                          |
+| `POST`   | `/api/user/signup`                           | Registra um novo usuário.                      |
+| `GET`    | `/api/user/{id}`                             | Obtém detalhes de um usuário específico.       |
+| `PUT`    | `/api/user/{id}`                             | Atualiza detalhes de um usuário específico.    |
+| `DELETE` | `/api/user/{id}`                             | Desativa um usuário específico.                |
+| `POST`   | `/api/user/{id}/children`                    | Registra um novo filho para um usuário.        |
+| `GET`    | `/api/user/{id}/children/{childId}`          | Obtém detalhes de um filho específico.         |
+| `GET`    | `/api/user/{id}/children`                    | Obtém todos os filhos de um usuário.           |
+| `PUT`    | `/api/user/{id}/children/{childId}`          | Atualiza detalhes de um filho específico.      |
+| `PUT`    | `/api/user/{id}/children/{childId}/active`   | Atualiza o status ativo de um filho específico.|
+| `PUT`    | `/api/user/{id}/phone`                       | Atualiza o telefone de um usuário.            |
+| `PUT`    | `/api/user/{id}/address`                     | Atualiza o endereço de um usuário.            |
+ 
+
+### Tela de Autenticação
+
+Permitir que os usuários façam login.
+
+- Campos:
+  - Nome de usuário (ou e-mail)
+  - Senha
+
+- Operação:
+  - Enviar solicitação de autenticação para `POST /api/user/login`.
+
+```
+{
+  "name": "string",
+  "cpf": "string",
+  "birthday": "string",
+  "email": "string",
+  "password": "string",
+  "address": {
+    "zipCode": "string",
+    "number": "string",
+    "street": "string",
+    "neighborhood": "string",
+    "city": "string",
+    "state": "string"
+  },
+  "phone": {
+    "ddd": "string",
+    "number": "string"
+  }
+}
+
+```
+
+
+---
+
+## Tela de Registro de Usuário
+
+Permitir que novos usuários se registrem.
+
+- Campos:
+  - Nome de usuário
+  - Senha
+  - E-mail
+  - Primeiro nome
+  - Último nome
+
+- Operação:
+  - Enviar solicitação de registro para `POST /api/user/signup`.
+
+---
+
 
 # Desenvolvedores:
 
