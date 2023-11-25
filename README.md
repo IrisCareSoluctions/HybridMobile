@@ -63,6 +63,10 @@
 `https://github.com/IrisCareSoluctions/HybridMobile.git` 
 4. Abra o repositorio e rode os seguintes comandos:
    - `npm install` -> baixar as bibliotecas presentes  o projeto
+   -  ` npm install -g eas-cli` -> Entrar no EAS
+   -  ` eas login` -> Logar no expo
+       -  email: devmaia@outlook.com
+       -  passwork: Fiap2023    
    - `npx expo start` -> abrindo o projeto com expo
    - escolha a opção que preferir, ler o QRCODE, ou digite `a` para abrir o emulador
 
