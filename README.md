@@ -1,25 +1,56 @@
 # IrisCare Soluctions
 
-    O IrisCare é um aplicativo móvel desenvolvido para a prevenção e controle do Retinoblastoma, uma forma de câncer ocular, por meio da análise de imagem, controle periódico e encaminhamento para a Secretaria Municipal e GRAACC.
+    O IrisCare é um aplicativo móvel desenvolvido para a prevenção e controle do Retinoblastoma, uma forma de câncer ocular, 
+    por meio da análise de imagem, controle periódico e encaminhamento para a Secretaria Municipal e GRAACC.
 
 
-<img align="center" src="./assets//evidencia4.png" />
+<img align="center" src="https://github.com/IrisCareSoluctions/HybridMobile/blob/main/assets/evidencia4.png" />
 
-# Endpoints
+----
+# <span style="color: #63C71F;">Pitch</span>
 
-    Para teste de CRUD principal escolhemos o User.
+[Assista ao video Pitch](https://youtu.be/0_QOPCaIbMc)
 
-    ## Endpoints da API
+----
 
-| Método   | Endpoint                                     | Descrição                                      |
-|----------|----------------------------------------------|------------------------------------------------|
-| `POST`   | `/api/user/login`                            | Autentica um usuário.                          |
-| `POST`   | `/api/user/signup`                           | Registra um novo usuário.                      |
-| `GET`    | `/api/user/{id}`                             | Obtém detalhes de um usuário específico.       |
-| `PUT`    | `/api/user/{id}`                             | Atualiza detalhes de um usuário específico.    |
-| `DELETE` | `/api/user/{id}`                             | Desativa um usuário específico.                |
+# <span style="color: #63C71F;">Demonstração do Backend</span>
 
-<br/>
+[Assista ao video do back-end integrado rodando](https://www.youtube.com/watch?v=T-gVGc_Rwao)
+
+---
+
+# Desenvolvedores:
+
+    -> RM: 93915 -  JAELSON DOS SANTOS
+
+    -> RM: 94311 - MARCOS BILOBRAM
+
+    -> RM: 96320 - NATHÁLIA MAIA
+
+    -> RM: 94972 - RAFAELA DA SILVA
+
+    -> RM: 93613 - VINICIUS DE OLIVEIRA
+
+
+
+<div align="center"> 
+    <a href="https://github.com/JaelsonJonas">
+        <img align="center" height="100" width="100" style="border-radius: 50%;" src="https://avatars.githubusercontent.com/u/101295166?v=4" />
+    </a>
+    <a href="https://github.com/marcosbilobram">
+        <img align="center" height="100" width="100" style="border-radius: 50%;" src="https://avatars.githubusercontent.com/u/92834827?v=4" />
+    </a>
+    <a href="https://github.com/natmaia">
+        <img align="center" height="100" width="100" style="border-radius: 50%;" src="https://avatars.githubusercontent.com/u/105464103?s=96&v=4" />
+    </a>
+    <a href="https://github.com/gsrafaela">
+        <img align="center" height="100" width="100" style="border-radius: 50%;" src="https://avatars.githubusercontent.com/u/99452621?v=4" />
+    </a>
+    <a href="https://github.com/ViniOlr">
+        <img align="center" height="100" width="100" style="border-radius: 50%;" src="https://avatars.githubusercontent.com/u/81593244?v=4" />
+    </a>
+</div>
+
 <br/>
 
 # Instruções de utilização
